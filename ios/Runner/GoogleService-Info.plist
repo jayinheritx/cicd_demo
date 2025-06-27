@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDUXemDwLFJb8IzKMapTjEDfyriETHhw4Y</string>
+	<string>AIzaSyCRZdbOsyN5qqUtoK0kudej1dHPLKAgz_k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>360857484104</string>
+	<string>847809894204</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.cicdDemo</string>
 	<key>PROJECT_ID</key>
-	<string>cicd-demo-17c73</string>
+	<string>cicd-demo-73e7b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cicd-demo-17c73.firebasestorage.app</string>
+	<string>cicd-demo-73e7b.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:360857484104:ios:bda78a08448a190acd917d</string>
+	<string>1:847809894204:ios:87fce784e9d875911cb039</string>
 </dict>
 </plist>
