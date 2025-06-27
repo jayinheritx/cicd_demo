@@ -37,12 +37,39 @@ jobs:
       - name: Build Web App
         run: flutter build web --release
 
+      - name: Set up Channel ID
+        id: generate_channel_id
+        run: |
+          DATE=$(date +'%Y%m%d')
+          FILE=".channel_id_log"
+            
+          # Check and update count
+          if [ -f "$FILE" ]; then
+            LAST_DATE=$(cut -c1-8 "$FILE")
+            if [ "$LAST_DATE" == "$DATE" ]; then
+              LAST_COUNT=$(cut -c9- "$FILE")
+              COUNT=$(printf "%02d" $((10#$LAST_COUNT + 1)))
+            else
+              COUNT="01"
+            fi
+          else
+            COUNT="01"
+          fi
+            
+          echo "${DATE}${COUNT}" > $FILE
+          echo "channelId=jay-sathvara-${DATE}${COUNT}" >> $GITHUB_OUTPUT
+
+      - name: Use channelId
+        run: |
+          echo "Generated Channel ID: ${{ steps.generate_channel_id.outputs.channelId }}"
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CICD_DEMO_73E7B }}
           projectId: cicd-demo-73e7b
-          channelId: preview
+          channelId: ${{ steps.generate_channel_id.outputs.channelId }}
+          expires: 30d
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
